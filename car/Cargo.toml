@@ -1,0 +1,25 @@
+[package]
+name = "car"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+util ={ path = "../util"}
+bom = { path = "../bom" }
+
+deku = { workspace = true }
+thiserror = { workspace = true }
+multimap = "0.10"
+lzfse_rust = { workspace = true }
+flate2 = { workspace = true }
+deepmap2 = { path = "../deepmap2" }
+image = { workspace = true, optional = true }
+serde = { workspace = true }
+
+[features]
+image = ["dep:image"]
+
+[dev-dependencies]
+lzvn = { workspace = true }
+test-support = { path = "../test-support" }
+wasm-bindgen-test = { workspace = true }

@@ -1,0 +1,12 @@
+[package]
+name = "util"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+deku = { workspace = true }
+lzfse_rust = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+wasm-bindgen-test = { workspace = true }

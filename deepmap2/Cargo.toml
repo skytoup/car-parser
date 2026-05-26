@@ -1,0 +1,14 @@
+[package]
+name = "deepmap2"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+deku = { workspace = true }
+thiserror = { workspace = true }
+lzfse_rust = { workspace = true }
+lzvn = { workspace = true }
+util = { path = "../util" }
+
+[dev-dependencies]
+wasm-bindgen-test = { workspace = true }

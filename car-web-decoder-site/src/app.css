@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap");
+@import "react-medium-image-zoom/dist/styles.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1rem;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 174 62% 34%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 23 68% 56%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 92%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 174 62% 34%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 174 62% 34%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --primary: 174 62% 45%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 174 62% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    @apply bg-background text-foreground antialiased;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(25, 156, 143, 0.08), transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(229, 160, 95, 0.06), transparent 35%),
+      linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+    font-family: "Manrope", "IBM Plex Sans", sans-serif;
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(25, 156, 143, 0.12), transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(229, 160, 95, 0.08), transparent 40%),
+      linear-gradient(to bottom right, #09090b, #111114);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer components {
+  .shell-frame {
+    @apply mx-auto w-full max-w-7xl px-4 pb-12 pt-6 md:px-8 md:pt-10;
+  }
+
+  .panel-surface {
+    @apply rounded-2xl border border-white/50 bg-white/70 shadow-panel backdrop-blur-md dark:border-white/10 dark:bg-zinc-900/70;
+  }
+}
+
+@layer utilities {
+  .drag-pulse {
+    animation: drag-pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes drag-pulse {
+    from {
+      box-shadow: 0 0 0 0 rgba(25, 156, 143, 0.2);
+    }
+    to {
+      box-shadow: 0 0 0 10px rgba(25, 156, 143, 0);
+    }
+  }
+
+  .drag-dash {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(25, 156, 143, 0.4) 0,
+      rgba(25, 156, 143, 0.4) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    background-size: 28px 28px;
+    animation: drag-dash-move 1s linear infinite;
+  }
+
+  .preview-checkerboard {
+    background-image: 
+      linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+      linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+
+  .dark .preview-checkerboard {
+    background-image: 
+      linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%);
+  }
+
+  @keyframes drag-dash-move {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 28px 0;
+    }
+  }
+}

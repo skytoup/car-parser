@@ -1,0 +1,15 @@
+[package]
+name = "car-tests"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+bom = { path = "../bom" }
+car = { path = "../car", features = ["image"]}
+
+deku = { workspace = true }
+
+[dev-dependencies]
+deepmap2 = { path = "../deepmap2" }
+image = { workspace = true, features = ["png"] }
+test-support = { path = "../test-support" }
