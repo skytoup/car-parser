@@ -1,18 +1,24 @@
 [package]
-name = "car"
+name = "car-parser"
 version.workspace = true
 edition.workspace = true
+description = "Rust parser for Apple .car asset catalog archives"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[lib]
+name = "car"
 
 [dependencies]
-util ={ path = "../util"}
-bom = { path = "../bom" }
+bom = { package = "car-parser-bom", path = "../bom", version = "0.0.1" }
 
 deku = { workspace = true }
 thiserror = { workspace = true }
 multimap = "0.10"
 lzfse_rust = { workspace = true }
 flate2 = { workspace = true }
-deepmap2 = { path = "../deepmap2" }
+deepmap2 = { package = "car-parser-deepmap2", path = "../deepmap2", version = "0.0.1" }
 image = { workspace = true, optional = true }
 serde = { workspace = true }
 
@@ -21,5 +27,4 @@ image = ["dep:image"]
 
 [dev-dependencies]
 lzvn = { workspace = true }
-test-support = { path = "../test-support" }
 wasm-bindgen-test = { workspace = true }

@@ -41,7 +41,7 @@ Online demo: https://car.skytoup.com/
 
 ## Quick Start
 
-Build the default workspace members, currently `bom` and `car`:
+Build the default workspace members, currently `car-parser-bom`, `car-parser-deepmap2`, and `car-parser`:
 
 ```bash
 cargo build
@@ -56,7 +56,7 @@ cargo test
 Run tests for a specific crate:
 
 ```bash
-cargo test -p car
+cargo test -p car-parser
 cargo test -p car-cli
 ```
 
@@ -118,7 +118,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 Image export helper:
 
 ```bash
-cargo run -p car --features image --example export_png -- <file.car> <asset-name> <out.png>
+cargo run -p car-parser --features image --example export_png -- <file.car> <asset-name> <out.png>
 ```
 
 More examples are available in `car/examples/`:
@@ -209,7 +209,7 @@ Rust:
 
 ```bash
 cargo test
-cargo test -p car
+cargo test -p car-parser
 cargo test -p car-cli
 ```
 

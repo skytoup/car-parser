@@ -7,6 +7,7 @@
 //! When the `image` feature is enabled, [`image`] exposes free functions for
 //! decoding or writing image assets without reaching into parser internals.
 
+mod apple_compression;
 pub mod asset;
 mod car;
 pub mod decode;
@@ -51,3 +52,9 @@ pub use crate::output::{
     OutputIdentity, OutputIdentityKind, default_raw_extension, default_raw_extension_for_item,
     rendition_scale, suggested_file_name, supported_output_identity,
 };
+
+pub(crate) fn deku_read_str(bytes: Vec<u8>) -> Result<String, deku::DekuError> {
+    Ok(String::from_utf8_lossy(&bytes)
+        .trim_end_matches('\0')
+        .to_string())
+}

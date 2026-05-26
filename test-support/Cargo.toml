@@ -2,5 +2,13 @@
 name = "test-support"
 version.workspace = true
 edition.workspace = true
+description = "Shared test helpers for CarParser"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+publish = false
+
+[lib]
+name = "test_support"
 
 [dependencies]

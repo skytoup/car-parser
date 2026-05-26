@@ -41,7 +41,7 @@ CarParser 是一个用于解析 Apple `.car` asset catalog 文件的 Rust worksp
 
 ## 快速开始
 
-构建默认 workspace members，当前为 `bom` 和 `car`：
+构建默认 workspace members，当前为 `car-parser-bom`、`car-parser-deepmap2` 和 `car-parser`：
 
 ```bash
 cargo build
@@ -56,7 +56,7 @@ cargo test
 运行指定 crate 测试：
 
 ```bash
-cargo test -p car
+cargo test -p car-parser
 cargo test -p car-cli
 ```
 
@@ -118,7 +118,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 图片导出 helper：
 
 ```bash
-cargo run -p car --features image --example export_png -- <file.car> <asset-name> <out.png>
+cargo run -p car-parser --features image --example export_png -- <file.car> <asset-name> <out.png>
 ```
 
 更多示例在 `car/examples/`：
@@ -209,7 +209,7 @@ Rust：
 
 ```bash
 cargo test
-cargo test -p car
+cargo test -p car-parser
 cargo test -p car-cli
 ```
 

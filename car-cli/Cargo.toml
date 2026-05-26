@@ -2,13 +2,22 @@
 name = "car-cli"
 version.workspace = true
 edition.workspace = true
+description = "Command-line tools for inspecting and extracting Apple .car asset catalogs"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+publish = false
+
+[[bin]]
+name = "car-cli"
+path = "src/main.rs"
 
 [features]
 default = ["image"]
 image = ["car/image"]
 
 [dependencies]
-car = { path = "../car", default-features = false }
+car = { package = "car-parser", path = "../car", version = "0.0.1", default-features = false }
 clap = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }

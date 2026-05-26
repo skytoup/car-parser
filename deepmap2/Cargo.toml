@@ -1,14 +1,20 @@
 [package]
-name = "deepmap2"
+name = "car-parser-deepmap2"
 version.workspace = true
 edition.workspace = true
+description = "Parser for DeepMap2 data structures in Apple .car asset catalogs"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[lib]
+name = "deepmap2"
 
 [dependencies]
 deku = { workspace = true }
 thiserror = { workspace = true }
 lzfse_rust = { workspace = true }
 lzvn = { workspace = true }
-util = { path = "../util" }
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }

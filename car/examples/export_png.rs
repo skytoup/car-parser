@@ -6,7 +6,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut args = env::args().skip(1);
     let path = args
         .next()
-        .expect("usage: cargo run -p car --features image --example export_png -- <file.car> <asset-name> <out.png>");
+        .expect("usage: cargo run -p car-parser --features image --example export_png -- <file.car> <asset-name> <out.png>");
     let name = args.next().unwrap_or_else(|| "Image/png".to_string());
     let out = args
         .map(PathBuf::from)
@@ -28,6 +28,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 #[cfg(not(feature = "image"))]
 fn main() {
     eprintln!(
-        "enable the `image` feature: cargo run -p car --features image --example export_png -- <file.car>"
+        "enable the `image` feature: cargo run -p car-parser --features image --example export_png -- <file.car>"
     );
 }

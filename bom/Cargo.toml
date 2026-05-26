@@ -1,11 +1,16 @@
 [package]
-name = "bom"
+name = "car-parser-bom"
 version.workspace = true
 edition.workspace = true
+description = "Parser for Apple BOM files used by CarParser"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[lib]
+name = "bom"
 
 [dependencies]
-util = { path = "../util" }
-
 deku = { workspace = true }
 thiserror = { workspace = true }
 memmap2 = { workspace = true }

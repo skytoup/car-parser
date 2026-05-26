@@ -1255,7 +1255,7 @@ mod tests {
     // 打印各阶段耗时，不做时间阈值断言。
 
     #[test]
-    #[ignore = "性能 smoke 测试 — 使用 `cargo test -p car-cli -- --ignored` 运行"]
+    #[ignore = "性能 smoke 测试，使用 `cargo test -p car-cli -- --ignored` 运行"]
     fn perf_smoke_extract_assets_car() {
         let car = fixture_car();
         let output = unique_temp_dir("perf-smoke");

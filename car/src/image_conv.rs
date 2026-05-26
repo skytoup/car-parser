@@ -729,7 +729,7 @@ impl CSIItem {
 
         match &self.header.rendition {
             Some(Rendition::RawData(rd)) => {
-                return util::apple_compression::maybe_decode_lzfse_with_fallback(
+                return crate::apple_compression::maybe_decode_lzfse_with_fallback(
                     rd.raw_data.as_slice(),
                 )
                 .map_err(CarError::from);
@@ -747,7 +747,7 @@ impl CSIItem {
             {
                 let mut bytes = Vec::new();
                 for chunk in &cbck.chunks {
-                    let data = util::apple_compression::maybe_decode_lzfse_with_fallback(
+                    let data = crate::apple_compression::maybe_decode_lzfse_with_fallback(
                         chunk.raw_data.as_slice(),
                     )?;
                     bytes.extend_from_slice(data.as_ref());
@@ -1302,7 +1302,6 @@ mod save_raw_tests {
     use crate::Encoding;
     use crate::car::{Car, CarError};
     use crate::model::rendition::Rendition;
-    use test_support::fixture_group;
 
     #[test]
     fn save_raw_with_raw_data() {
@@ -1449,13 +1448,18 @@ mod save_raw_tests {
     }
 
     fn fixture_ios_car() -> Option<Car> {
-        let group = fixture_group("full");
-        if !group.is_enabled() {
+        let full_fixtures_enabled = matches!(
+            std::env::var("CAR_TEST_FULL").as_deref(),
+            Ok("1") | Ok("true") | Ok("TRUE") | Ok("yes") | Ok("YES")
+        );
+        if !full_fixtures_enabled {
             eprintln!("skipping full fixture test: set CAR_TEST_FULL=1 to enable Assets_iOS.car");
             return None;
         }
 
-        let path = group.path("Assets_iOS.car");
+        let path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../car-tests/data")
+            .join("Assets_iOS.car");
         if !path.exists() {
             eprintln!("skipping full fixture test: missing {}", path.display());
             return None;

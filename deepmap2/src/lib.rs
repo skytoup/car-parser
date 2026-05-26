@@ -4,6 +4,7 @@
 //! `KCBC` sequences. The stable root exposes decode entry points plus a small
 //! enum surface, while [`raw`] contains the parsed binary header structs.
 
+mod apple_compression;
 pub mod codec;
 mod color;
 mod model;

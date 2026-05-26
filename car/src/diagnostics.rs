@@ -186,9 +186,15 @@ fn unsupported_compression(compression: CompressionType) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use test_support::fixture_path;
+    use std::path::PathBuf;
 
     use super::*;
+
+    fn fixture_path(name: &str) -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../car-tests/data")
+            .join(name)
+    }
 
     #[test]
     fn promptbar_hevc_is_supported_as_original_output() {

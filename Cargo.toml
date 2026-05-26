@@ -11,11 +11,14 @@ members = [
     "test-support",
     "car-wasm",
 ]
-default-members = ["bom", "car"]
+default-members = ["bom", "deepmap2", "car"]
 
 [workspace.package]
 version = "0.0.1"
 edition = "2024"
+license = "MIT"
+repository = "https://github.com/skytoup/car-parser"
+readme = "README.md"
 
 [workspace.dependencies]
 deku = { version = "^0.20" }

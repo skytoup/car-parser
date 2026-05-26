@@ -5,7 +5,7 @@ fn main() -> Result<(), car::CarError> {
     let mut args = env::args().skip(1);
     let path = args
         .next()
-        .expect("usage: cargo run -p car --example export_plan -- <file.car> [out-dir]");
+        .expect("usage: cargo run -p car-parser --example export_plan -- <file.car> [out-dir]");
     let out = args
         .map(PathBuf::from)
         .next()

@@ -15,9 +15,9 @@ Rust workspace for parsing Apple `.car` asset catalogs, with a browser decoder U
 
 Repository root:
 
-- `cargo build`: builds the default workspace members, `bom` and `car`.
+- `cargo build`: builds the default workspace members, `car-parser-bom`, `car-parser-deepmap2`, and `car-parser`.
 - `cargo test`: runs tests for default members.
-- `cargo test -p car` or `cargo test -p car-cli`: runs crate-specific tests.
+- `cargo test -p car-parser` or `cargo test -p car-cli`: runs crate-specific tests.
 - `cargo run -p car-cli -- info <file.car>`: prints archive information.
 - `cargo run -p car-cli -- extract <file.car> -o <dir>`: extracts archive contents.
 

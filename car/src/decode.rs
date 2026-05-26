@@ -508,7 +508,7 @@ mod tests {
 
     use deku::{DekuReader, reader::Reader};
     use flate2::{Compression, write::GzEncoder};
-    use test_support::fixture_path;
+    use std::path::PathBuf;
 
     use super::{
         DecodeBudgetError, DecodeOptions, DecodeStage, RenditionData, RenditionDataRef,
@@ -524,6 +524,12 @@ mod tests {
     const COMP_LZFSE: u32 = 4;
     const COMP_HEVC: u32 = 9;
     const COMP_DEEPMAP2: u32 = 11;
+
+    fn fixture_path(name: &str) -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../car-tests/data")
+            .join(name)
+    }
 
     fn fixture_car() -> Car {
         Car::new(fixture_path("Assets.car")).expect("load test Assets.car")

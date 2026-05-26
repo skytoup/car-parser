@@ -2,9 +2,9 @@ use std::env;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut args = env::args().skip(1);
-    let path = args
-        .next()
-        .expect("usage: cargo run -p car --example query_variant -- <file.car> <asset-name>");
+    let path = args.next().expect(
+        "usage: cargo run -p car-parser --example query_variant -- <file.car> <asset-name>",
+    );
     let name = args.next().unwrap_or_else(|| "Image/png".to_string());
     let archive = car::Car::new(path)?;
 

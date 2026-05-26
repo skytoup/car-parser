@@ -9,13 +9,13 @@ use deku::{ctx::Order, prelude::*, reader::Reader};
 #[derive(Debug, DekuRead)]
 #[deku(endian = "big", magic = b"META")]
 pub struct ExtendedMetadata {
-    #[deku(bytes_read = "256", map = "util::deku_read_str")]
+    #[deku(bytes_read = "256", map = "crate::deku_read_str")]
     pub thinning_args: String,
-    #[deku(bytes_read = "256", map = "util::deku_read_str")]
+    #[deku(bytes_read = "256", map = "crate::deku_read_str")]
     pub deployment_platform_version: String,
-    #[deku(bytes_read = "256", map = "util::deku_read_str")]
+    #[deku(bytes_read = "256", map = "crate::deku_read_str")]
     pub deployment_platform: String,
-    #[deku(bytes_read = "256", map = "util::deku_read_str")]
+    #[deku(bytes_read = "256", map = "crate::deku_read_str")]
     pub authoring_tool: String,
 }
 
@@ -26,9 +26,9 @@ pub struct Header {
     pub storage_version: u32,
     pub storage_timestamp: u32,
     pub rendition_count: u32,
-    #[deku(bytes_read = "128", map = "util::deku_read_str")]
+    #[deku(bytes_read = "128", map = "crate::deku_read_str")]
     pub main_version_string: String,
-    #[deku(bytes_read = "256", map = "util::deku_read_str")]
+    #[deku(bytes_read = "256", map = "crate::deku_read_str")]
     pub version_string: String,
     pub uuid: [u8; 16],
     pub associated_checksumag: u32,
@@ -231,7 +231,7 @@ fn bom_error_to_deku(err: BOMEror) -> DekuError {
 pub struct CSIMetadata {
     pub modification_time: u32,
     pub layout_type: rendition::LayoutType,
-    #[deku(bytes_read = "128", map = "util::deku_read_str")]
+    #[deku(bytes_read = "128", map = "crate::deku_read_str")]
     pub name: String,
 }
 

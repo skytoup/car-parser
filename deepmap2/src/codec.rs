@@ -1,6 +1,6 @@
 use lzfse_rust::LzfseRingDecoder;
-use util::apple_compression::{self, AppleCompressionError};
 
+use crate::apple_compression::{self, AppleCompressionError};
 use crate::color::{output_bytes_to_rgba, palette_entry_to_rgba, row_to_rgba};
 use crate::model::{DecodeType, Deepmap2Header, PixelFormat};
 use crate::predictor::apply_predictor;

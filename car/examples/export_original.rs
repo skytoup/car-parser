@@ -5,7 +5,7 @@ use std::path::PathBuf;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut args = env::args().skip(1);
     let path = args.next().expect(
-        "usage: cargo run -p car --example export_original -- <file.car> <asset-name> <out-file>",
+        "usage: cargo run -p car-parser --example export_original -- <file.car> <asset-name> <out-file>",
     );
     let name = args.next().unwrap_or_else(|| "Image/pdf".to_string());
     let out = args

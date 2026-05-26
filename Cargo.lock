@@ -100,16 +100,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "bom"
-version = "0.0.1"
-dependencies = [
- "deku",
- "memmap2",
- "thiserror",
- "util",
-]
-
-[[package]]
 name = "bumpalo"
 version = "3.20.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -128,30 +118,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1fe948ff07f4bd06c30984e69f5b4899c516a3ef74f34df92a2df2ab535495"
 
 [[package]]
-name = "car"
-version = "0.0.1"
-dependencies = [
- "bom",
- "deepmap2",
- "deku",
- "flate2",
- "image",
- "lzfse_rust",
- "lzvn",
- "multimap",
- "serde",
- "test-support",
- "thiserror",
- "util",
- "wasm-bindgen-test",
-]
-
-[[package]]
 name = "car-cli"
 version = "0.0.1"
 dependencies = [
  "anyhow",
- "car",
+ "car-parser",
  "clap",
  "image",
  "rayon",
@@ -161,12 +132,49 @@ dependencies = [
 ]
 
 [[package]]
+name = "car-parser"
+version = "0.0.1"
+dependencies = [
+ "car-parser-bom",
+ "car-parser-deepmap2",
+ "deku",
+ "flate2",
+ "image",
+ "lzfse_rust",
+ "lzvn",
+ "multimap",
+ "serde",
+ "thiserror",
+ "wasm-bindgen-test",
+]
+
+[[package]]
+name = "car-parser-bom"
+version = "0.0.1"
+dependencies = [
+ "deku",
+ "memmap2",
+ "thiserror",
+]
+
+[[package]]
+name = "car-parser-deepmap2"
+version = "0.0.1"
+dependencies = [
+ "deku",
+ "lzfse_rust",
+ "lzvn",
+ "thiserror",
+ "wasm-bindgen-test",
+]
+
+[[package]]
 name = "car-tests"
 version = "0.0.1"
 dependencies = [
- "bom",
- "car",
- "deepmap2",
+ "car-parser",
+ "car-parser-bom",
+ "car-parser-deepmap2",
  "deku",
  "image",
  "test-support",
@@ -176,8 +184,8 @@ dependencies = [
 name = "car-wasm"
 version = "0.0.1"
 dependencies = [
- "car",
- "deepmap2",
+ "car-parser",
+ "car-parser-deepmap2",
  "image",
  "js-sys",
  "serde",
@@ -323,18 +331,6 @@ dependencies = [
  "darling_core",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "deepmap2"
-version = "0.0.1"
-dependencies = [
- "deku",
- "lzfse_rust",
- "lzvn",
- "thiserror",
- "util",
- "wasm-bindgen-test",
 ]
 
 [[package]]

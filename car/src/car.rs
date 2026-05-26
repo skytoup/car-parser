@@ -607,16 +607,16 @@ pub enum CarError {
     Image(#[from] image::ImageError),
 }
 
-impl From<util::apple_compression::AppleCompressionError> for CarError {
-    fn from(error: util::apple_compression::AppleCompressionError) -> Self {
+impl From<crate::apple_compression::AppleCompressionError> for CarError {
+    fn from(error: crate::apple_compression::AppleCompressionError) -> Self {
         match error {
-            util::apple_compression::AppleCompressionError::DecodeFailed(message) => {
+            crate::apple_compression::AppleCompressionError::DecodeFailed(message) => {
                 Self::DecodeFailed(message)
             }
-            util::apple_compression::AppleCompressionError::NativeFallbackUnavailable(message) => {
+            crate::apple_compression::AppleCompressionError::NativeFallbackUnavailable(message) => {
                 Self::NativeFallbackUnavailable(message.to_string())
             }
-            util::apple_compression::AppleCompressionError::Io(error) => Self::Io(error),
+            crate::apple_compression::AppleCompressionError::Io(error) => Self::Io(error),
         }
     }
 }
@@ -629,12 +629,17 @@ mod tests {
     use super::{Car, ReferenceResolveError};
     use crate::asset::{AssetKind, PayloadKind};
     use crate::{VariantQuery, export};
-    use test_support::fixture_path;
 
     const SMOKE_IMAGE: &str = "2016_coin1";
     const SMOKE_COLOR: &str = "ActionSheet_Action_Icon_Color";
     const SMOKE_DOCUMENT: &str = "GameLifeChatListEmpty";
     const DISPLAY_GAMUT_IMAGE: &str = "AS_YuanBao_Dark";
+
+    fn fixture_path(name: &str) -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../car-tests/data")
+            .join(name)
+    }
 
     fn fixture_car() -> Car {
         Car::new(fixture_path("Assets.car")).expect("load test Assets.car")

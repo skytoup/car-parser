@@ -3,15 +3,17 @@ name = "car-wasm"
 version.workspace = true
 edition.workspace = true
 description = "wasm-bindgen wrapper for CarParser car image listing and export"
-license = "MIT"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
 publish = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-car = { path = "../car", features = ["image"] }
-deepmap2 = { path = "../deepmap2" }
+car = { package = "car-parser", path = "../car", version = "0.0.1", features = ["image"] }
+deepmap2 = { package = "car-parser-deepmap2", path = "../deepmap2", version = "0.0.1" }
 image = { workspace = true }
 js-sys = { workspace = true }
 serde = { version = "1", features = ["derive"] }

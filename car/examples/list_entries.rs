@@ -3,7 +3,7 @@ use std::env;
 fn main() -> Result<(), car::CarError> {
     let path = env::args()
         .nth(1)
-        .expect("usage: cargo run -p car --example list_entries -- <file.car>");
+        .expect("usage: cargo run -p car-parser --example list_entries -- <file.car>");
     let archive = car::Car::new(path)?;
 
     for entry in archive.entries() {

@@ -2,14 +2,19 @@
 name = "car-tests"
 version.workspace = true
 edition.workspace = true
+description = "Integration tests for CarParser"
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+publish = false
 
 [dependencies]
-bom = { path = "../bom" }
-car = { path = "../car", features = ["image"]}
+bom = { package = "car-parser-bom", path = "../bom", version = "0.0.1" }
+car = { package = "car-parser", path = "../car", version = "0.0.1", features = ["image"] }
 
 deku = { workspace = true }
 
 [dev-dependencies]
-deepmap2 = { path = "../deepmap2" }
+deepmap2 = { package = "car-parser-deepmap2", path = "../deepmap2", version = "0.0.1" }
 image = { workspace = true, features = ["png"] }
 test-support = { path = "../test-support" }

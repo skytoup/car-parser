@@ -103,7 +103,7 @@ pub struct TreePathIndex {
 
 #[derive(Debug, Hash, PartialEq, Eq, PartialOrd, Ord, deku::DekuRead)]
 pub struct BOMStr {
-    #[deku(read_all, map = "util::deku_read_str")]
+    #[deku(read_all, map = "crate::deku_read_str")]
     pub content: String,
 }
 
